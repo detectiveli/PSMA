@@ -1,0 +1,390 @@
+/home/lihui/.conda/envs/ps_base/bin/python /home/lihui/PycharmProjects/Person_ReID_Baseline/train.py ./config/market_softmax_triplet.yaml
+2019-07-25 15:05:18,360 Reid_Baseline INFO: Using 1 GPUS
+2019-07-25 15:05:18,360 Reid_Baseline INFO: Loaded configuration file ./config/market_softmax_triplet.yaml
+2019-07-25 15:05:18,360 Reid_Baseline INFO: Running with config:
+DATALOADER:
+  NUM_INSTANCE: 16
+  NUM_WORKERS: 8
+  SAMPLER: softmax_triplet
+DATASETS:
+  NAMES: Market1501
+  STORE_DIR: /home/lihui/datasets
+DEVICE: cuda:0
+INPUT:
+  BRIGHTNESS: 0.0
+  CONTRAST: 0.0
+  HUE: 0.0
+  PADDING: 10
+  PIXEL_MEAN: [0.485, 0.456, 0.406]
+  PIXEL_STD: [0.229, 0.224, 0.225]
+  PROB: 0.5
+  SATURATION: 0.0
+  SIZE_TEST: [256, 128]
+  SIZE_TRAIN: [256, 128]
+MODEL:
+  NAME: ResNet50
+OUTPUT_DIR: ./checkpoint/Market1501/Softmax_BS64
+RE_RANKING: False
+SOLVER:
+  BASE_LR: 0.0001
+  BIAS_LR_FACTOR: 1
+  CHECKPOINT_PERIOD: 80
+  EVAL_PERIOD: 40
+  GAMMA: 0.1
+  IMS_PER_BATCH: 16
+  MARGIN: 0.3
+  MAX_EPOCHS: 4200
+  MOMENTUM: 0.7
+  OPTIMIZER_NAME: Adam
+  STEP: 80
+  WEIGHT_DECAY: 0.0005
+  WEIGHT_DECAY_BIAS: 0.0005
+TEST:
+  IMS_PER_BATCH: 128
+  LOAD_EPOCH: 120
+=> Market1501 Loaded
+Dataset statistics:
+  ----------------------------------------
+  subset   | # ids | # images | # cameras
+  ----------------------------------------
+  train    |   751 |    77616 |         6
+  query    |   750 |     3368 |         6
+  gallery  |   751 |    15913 |         6
+  ----------------------------------------
+=> Market1501 Loaded
+Dataset statistics:
+  ----------------------------------------
+  subset   | # ids | # images | # cameras
+  ----------------------------------------
+  train    |   751 |      751 |         6
+  query    |   750 |     3368 |         6
+  gallery  |   751 |    15913 |         6
+  ----------------------------------------
+2019-07-25 15:05:19,706 Reid_Baseline INFO: Start training
+top:  0
+100%|██████████| 607/607 [00:53<00:00, 11.43it/s]
+2019-07-25 15:13:04,355 Reid_Baseline INFO: Validation Results - Epoch: 40
+2019-07-25 15:13:04,356 Reid_Baseline INFO: mAP: 9.7%
+2019-07-25 15:13:04,356 Reid_Baseline INFO: CMC curve, Rank-1  :26.6%
+2019-07-25 15:13:04,356 Reid_Baseline INFO: CMC curve, Rank-5  :42.9%
+2019-07-25 15:13:04,356 Reid_Baseline INFO: CMC curve, Rank-10 :50.2%
+Model:ResNet50_epo80.pth saves successfully
+2019-07-25 15:19:51,797 Reid_Baseline INFO: Validation Results - Epoch: 80
+2019-07-25 15:19:51,797 Reid_Baseline INFO: mAP: 11.9%
+2019-07-25 15:19:51,797 Reid_Baseline INFO: CMC curve, Rank-1  :30.6%
+2019-07-25 15:19:51,797 Reid_Baseline INFO: CMC curve, Rank-5  :48.2%
+2019-07-25 15:19:51,798 Reid_Baseline INFO: CMC curve, Rank-10 :56.3%
+top:  5
+100%|██████████| 607/607 [02:17<00:00,  4.40it/s]
+tensor(0.9714)   tensor(3739)
+2019-07-25 15:48:40,212 Reid_Baseline INFO: Validation Results - Epoch: 120
+2019-07-25 15:48:40,213 Reid_Baseline INFO: mAP: 20.2%
+2019-07-25 15:48:40,213 Reid_Baseline INFO: CMC curve, Rank-1  :49.2%
+2019-07-25 15:48:40,213 Reid_Baseline INFO: CMC curve, Rank-5  :67.8%
+2019-07-25 15:48:40,213 Reid_Baseline INFO: CMC curve, Rank-10 :75.2%
+top:  10
+100%|██████████| 607/607 [02:18<00:00,  4.39it/s]
+tensor(0.9233)   tensor(7353)
+Model:ResNet50_epo160.pth saves successfully
+2019-07-25 16:17:34,313 Reid_Baseline INFO: Validation Results - Epoch: 160
+2019-07-25 16:17:34,313 Reid_Baseline INFO: mAP: 24.1%
+2019-07-25 16:17:34,313 Reid_Baseline INFO: CMC curve, Rank-1  :57.2%
+2019-07-25 16:17:34,313 Reid_Baseline INFO: CMC curve, Rank-5  :73.0%
+2019-07-25 16:17:34,313 Reid_Baseline INFO: CMC curve, Rank-10 :79.5%
+top:  15
+100%|██████████| 607/607 [02:19<00:00,  5.17it/s]
+tensor(0.8734)   tensor(11100)
+2019-07-25 16:47:20,452 Reid_Baseline INFO: Validation Results - Epoch: 200
+2019-07-25 16:47:20,452 Reid_Baseline INFO: mAP: 26.6%
+2019-07-25 16:47:20,452 Reid_Baseline INFO: CMC curve, Rank-1  :60.8%
+2019-07-25 16:47:20,452 Reid_Baseline INFO: CMC curve, Rank-5  :75.9%
+2019-07-25 16:47:20,452 Reid_Baseline INFO: CMC curve, Rank-10 :81.9%
+top:  20
+100%|██████████| 607/607 [02:19<00:00,  4.37it/s]
+tensor(0.8366)   tensor(14833)
+Feature Extraction:   0%|          | 0/151 [00:00<?, ?it/s]Model:ResNet50_epo240.pth saves successfully
+2019-07-25 17:17:42,651 Reid_Baseline INFO: Validation Results - Epoch: 240
+2019-07-25 17:17:42,652 Reid_Baseline INFO: mAP: 28.1%
+2019-07-25 17:17:42,652 Reid_Baseline INFO: CMC curve, Rank-1  :62.3%
+2019-07-25 17:17:42,652 Reid_Baseline INFO: CMC curve, Rank-5  :77.1%
+2019-07-25 17:17:42,652 Reid_Baseline INFO: CMC curve, Rank-10 :82.6%
+top:  25
+100%|██████████| 607/607 [02:18<00:00,  5.33it/s]
+tensor(0.8057)   tensor(18547)
+2019-07-25 17:46:46,501 Reid_Baseline INFO: Validation Results - Epoch: 280
+2019-07-25 17:46:46,502 Reid_Baseline INFO: mAP: 30.5%
+2019-07-25 17:46:46,502 Reid_Baseline INFO: CMC curve, Rank-1  :64.8%
+2019-07-25 17:46:46,502 Reid_Baseline INFO: CMC curve, Rank-5  :79.1%
+2019-07-25 17:46:46,502 Reid_Baseline INFO: CMC curve, Rank-10 :84.1%
+top:  30
+100%|██████████| 607/607 [02:17<00:00,  4.40it/s]
+tensor(0.7768)   tensor(22256)
+Model:ResNet50_epo320.pth saves successfully
+2019-07-25 18:15:49,818 Reid_Baseline INFO: Validation Results - Epoch: 320
+2019-07-25 18:15:49,818 Reid_Baseline INFO: mAP: 30.4%
+2019-07-25 18:15:49,818 Reid_Baseline INFO: CMC curve, Rank-1  :64.9%
+2019-07-25 18:15:49,818 Reid_Baseline INFO: CMC curve, Rank-5  :79.0%
+2019-07-25 18:15:49,818 Reid_Baseline INFO: CMC curve, Rank-10 :83.8%
+top:  35
+100%|██████████| 607/607 [02:17<00:00,  4.40it/s]
+tensor(0.7514)   tensor(25948)
+2019-07-25 18:44:59,399 Reid_Baseline INFO: Validation Results - Epoch: 360
+2019-07-25 18:44:59,399 Reid_Baseline INFO: mAP: 31.2%
+2019-07-25 18:44:59,399 Reid_Baseline INFO: CMC curve, Rank-1  :65.2%
+2019-07-25 18:44:59,399 Reid_Baseline INFO: CMC curve, Rank-5  :79.8%
+2019-07-25 18:44:59,399 Reid_Baseline INFO: CMC curve, Rank-10 :85.0%
+top:  40
+100%|██████████| 607/607 [02:18<00:00,  4.38it/s]
+tensor(0.7300)   tensor(29516)
+Model:ResNet50_epo400.pth saves successfully
+2019-07-25 19:14:47,708 Reid_Baseline INFO: Validation Results - Epoch: 400
+2019-07-25 19:14:47,709 Reid_Baseline INFO: mAP: 33.3%
+2019-07-25 19:14:47,709 Reid_Baseline INFO: CMC curve, Rank-1  :67.5%
+2019-07-25 19:14:47,709 Reid_Baseline INFO: CMC curve, Rank-5  :82.0%
+2019-07-25 19:14:47,709 Reid_Baseline INFO: CMC curve, Rank-10 :86.5%
+top:  45
+100%|██████████| 607/607 [02:17<00:00,  4.41it/s]
+tensor(0.7111)   tensor(33114)
+2019-07-25 19:44:05,040 Reid_Baseline INFO: Validation Results - Epoch: 440
+2019-07-25 19:44:05,040 Reid_Baseline INFO: mAP: 35.1%
+2019-07-25 19:44:05,040 Reid_Baseline INFO: CMC curve, Rank-1  :68.8%
+2019-07-25 19:44:05,040 Reid_Baseline INFO: CMC curve, Rank-5  :82.2%
+2019-07-25 19:44:05,040 Reid_Baseline INFO: CMC curve, Rank-10 :87.1%
+top:  50
+100%|██████████| 607/607 [02:18<00:00,  4.39it/s]
+tensor(0.6920)   tensor(36628)
+Model:ResNet50_epo480.pth saves successfully
+2019-07-25 20:13:13,784 Reid_Baseline INFO: Validation Results - Epoch: 480
+2019-07-25 20:13:13,784 Reid_Baseline INFO: mAP: 34.3%
+2019-07-25 20:13:13,784 Reid_Baseline INFO: CMC curve, Rank-1  :68.3%
+2019-07-25 20:13:13,784 Reid_Baseline INFO: CMC curve, Rank-5  :81.7%
+2019-07-25 20:13:13,784 Reid_Baseline INFO: CMC curve, Rank-10 :86.1%
+top:  55
+100%|██████████| 607/607 [02:17<00:00,  4.41it/s]
+tensor(0.6758)   tensor(40012)
+2019-07-25 20:42:20,024 Reid_Baseline INFO: Validation Results - Epoch: 520
+2019-07-25 20:42:20,024 Reid_Baseline INFO: mAP: 36.1%
+2019-07-25 20:42:20,024 Reid_Baseline INFO: CMC curve, Rank-1  :70.4%
+2019-07-25 20:42:20,024 Reid_Baseline INFO: CMC curve, Rank-5  :84.1%
+2019-07-25 20:42:20,024 Reid_Baseline INFO: CMC curve, Rank-10 :87.8%
+top:  60
+100%|██████████| 607/607 [02:17<00:00,  4.40it/s]
+tensor(0.6622)   tensor(43122)
+Model:ResNet50_epo560.pth saves successfully
+2019-07-25 21:11:24,539 Reid_Baseline INFO: Validation Results - Epoch: 560
+2019-07-25 21:11:24,539 Reid_Baseline INFO: mAP: 35.7%
+2019-07-25 21:11:24,539 Reid_Baseline INFO: CMC curve, Rank-1  :69.4%
+2019-07-25 21:11:24,539 Reid_Baseline INFO: CMC curve, Rank-5  :83.0%
+2019-07-25 21:11:24,539 Reid_Baseline INFO: CMC curve, Rank-10 :87.4%
+top:  65
+100%|██████████| 607/607 [02:17<00:00,  4.40it/s]
+tensor(0.6493)   tensor(46245)
+2019-07-25 21:40:29,542 Reid_Baseline INFO: Validation Results - Epoch: 600
+2019-07-25 21:40:29,542 Reid_Baseline INFO: mAP: 35.5%
+2019-07-25 21:40:29,543 Reid_Baseline INFO: CMC curve, Rank-1  :69.3%
+2019-07-25 21:40:29,543 Reid_Baseline INFO: CMC curve, Rank-5  :82.2%
+2019-07-25 21:40:29,543 Reid_Baseline INFO: CMC curve, Rank-10 :87.2%
+top:  70
+100%|██████████| 607/607 [02:18<00:00,  5.34it/s]
+tensor(0.6382)   tensor(49078)
+Model:ResNet50_epo640.pth saves successfully
+2019-07-25 22:09:34,856 Reid_Baseline INFO: Validation Results - Epoch: 640
+2019-07-25 22:09:34,856 Reid_Baseline INFO: mAP: 37.3%
+2019-07-25 22:09:34,856 Reid_Baseline INFO: CMC curve, Rank-1  :70.4%
+2019-07-25 22:09:34,856 Reid_Baseline INFO: CMC curve, Rank-5  :83.4%
+2019-07-25 22:09:34,856 Reid_Baseline INFO: CMC curve, Rank-10 :88.2%
+top:  75
+100%|██████████| 607/607 [02:17<00:00,  4.41it/s]
+tensor(0.6307)   tensor(51519)
+2019-07-25 22:38:41,065 Reid_Baseline INFO: Validation Results - Epoch: 680
+2019-07-25 22:38:41,066 Reid_Baseline INFO: mAP: 37.1%
+2019-07-25 22:38:41,066 Reid_Baseline INFO: CMC curve, Rank-1  :70.4%
+2019-07-25 22:38:41,066 Reid_Baseline INFO: CMC curve, Rank-5  :84.1%
+2019-07-25 22:38:41,066 Reid_Baseline INFO: CMC curve, Rank-10 :88.2%
+top:  80
+100%|██████████| 607/607 [02:17<00:00,  5.33it/s]
+tensor(0.6226)   tensor(53843)
+Model:ResNet50_epo720.pth saves successfully
+2019-07-25 23:07:47,825 Reid_Baseline INFO: Validation Results - Epoch: 720
+2019-07-25 23:07:47,825 Reid_Baseline INFO: mAP: 36.2%
+2019-07-25 23:07:47,825 Reid_Baseline INFO: CMC curve, Rank-1  :70.3%
+2019-07-25 23:07:47,825 Reid_Baseline INFO: CMC curve, Rank-5  :82.9%
+2019-07-25 23:07:47,825 Reid_Baseline INFO: CMC curve, Rank-10 :86.8%
+top:  85
+100%|██████████| 607/607 [02:17<00:00,  4.41it/s]
+tensor(0.6160)   tensor(55944)
+2019-07-25 23:36:54,541 Reid_Baseline INFO: Validation Results - Epoch: 760
+2019-07-25 23:36:54,541 Reid_Baseline INFO: mAP: 37.2%
+2019-07-25 23:36:54,541 Reid_Baseline INFO: CMC curve, Rank-1  :70.4%
+2019-07-25 23:36:54,542 Reid_Baseline INFO: CMC curve, Rank-5  :83.6%
+2019-07-25 23:36:54,542 Reid_Baseline INFO: CMC curve, Rank-10 :87.4%
+top:  90
+100%|██████████| 607/607 [02:17<00:00,  4.40it/s]
+tensor(0.6092)   tensor(58205)
+Model:ResNet50_epo800.pth saves successfully
+2019-07-26 00:06:01,905 Reid_Baseline INFO: Validation Results - Epoch: 800
+2019-07-26 00:06:01,905 Reid_Baseline INFO: mAP: 37.7%
+2019-07-26 00:06:01,905 Reid_Baseline INFO: CMC curve, Rank-1  :71.1%
+2019-07-26 00:06:01,905 Reid_Baseline INFO: CMC curve, Rank-5  :83.5%
+2019-07-26 00:06:01,905 Reid_Baseline INFO: CMC curve, Rank-10 :87.7%
+top:  95
+100%|██████████| 607/607 [02:17<00:00,  4.40it/s]
+tensor(0.6060)   tensor(59678)
+2019-07-26 00:35:08,819 Reid_Baseline INFO: Validation Results - Epoch: 840
+2019-07-26 00:35:08,819 Reid_Baseline INFO: mAP: 39.7%
+2019-07-26 00:35:08,819 Reid_Baseline INFO: CMC curve, Rank-1  :72.2%
+2019-07-26 00:35:08,819 Reid_Baseline INFO: CMC curve, Rank-5  :85.0%
+2019-07-26 00:35:08,819 Reid_Baseline INFO: CMC curve, Rank-10 :88.6%
+top:  100
+100%|██████████| 607/607 [02:17<00:00,  4.40it/s]
+tensor(0.6067)   tensor(61035)
+Model:ResNet50_epo880.pth saves successfully
+2019-07-26 01:04:15,218 Reid_Baseline INFO: Validation Results - Epoch: 880
+2019-07-26 01:04:15,218 Reid_Baseline INFO: mAP: 37.4%
+2019-07-26 01:04:15,218 Reid_Baseline INFO: CMC curve, Rank-1  :70.5%
+2019-07-26 01:04:15,218 Reid_Baseline INFO: CMC curve, Rank-5  :84.1%
+2019-07-26 01:04:15,218 Reid_Baseline INFO: CMC curve, Rank-10 :88.1%
+top:  105
+100%|██████████| 607/607 [02:17<00:00,  4.41it/s]
+tensor(0.6057)   tensor(62015)
+2019-07-26 01:33:21,378 Reid_Baseline INFO: Validation Results - Epoch: 920
+2019-07-26 01:33:21,379 Reid_Baseline INFO: mAP: 39.5%
+2019-07-26 01:33:21,379 Reid_Baseline INFO: CMC curve, Rank-1  :72.0%
+2019-07-26 01:33:21,379 Reid_Baseline INFO: CMC curve, Rank-5  :85.5%
+2019-07-26 01:33:21,379 Reid_Baseline INFO: CMC curve, Rank-10 :89.2%
+top:  110
+100%|██████████| 607/607 [02:17<00:00,  4.41it/s]
+tensor(0.6055)   tensor(63295)
+Model:ResNet50_epo960.pth saves successfully
+2019-07-26 02:02:28,580 Reid_Baseline INFO: Validation Results - Epoch: 960
+2019-07-26 02:02:28,581 Reid_Baseline INFO: mAP: 39.6%
+2019-07-26 02:02:28,581 Reid_Baseline INFO: CMC curve, Rank-1  :72.1%
+2019-07-26 02:02:28,581 Reid_Baseline INFO: CMC curve, Rank-5  :85.1%
+2019-07-26 02:02:28,581 Reid_Baseline INFO: CMC curve, Rank-10 :89.0%
+top:  115
+100%|██████████| 607/607 [02:17<00:00,  4.40it/s]
+tensor(0.6055)   tensor(64178)
+2019-07-26 02:31:36,282 Reid_Baseline INFO: Validation Results - Epoch: 1000
+2019-07-26 02:31:36,283 Reid_Baseline INFO: mAP: 38.2%
+2019-07-26 02:31:36,283 Reid_Baseline INFO: CMC curve, Rank-1  :71.4%
+2019-07-26 02:31:36,283 Reid_Baseline INFO: CMC curve, Rank-5  :84.1%
+2019-07-26 02:31:36,283 Reid_Baseline INFO: CMC curve, Rank-10 :88.6%
+top:  120
+100%|██████████| 607/607 [02:17<00:00,  4.41it/s]
+tensor(0.6014)   tensor(65385)
+Model:ResNet50_epo1040.pth saves successfully
+2019-07-26 03:00:43,284 Reid_Baseline INFO: Validation Results - Epoch: 1040
+2019-07-26 03:00:43,285 Reid_Baseline INFO: mAP: 38.7%
+2019-07-26 03:00:43,285 Reid_Baseline INFO: CMC curve, Rank-1  :71.3%
+2019-07-26 03:00:43,285 Reid_Baseline INFO: CMC curve, Rank-5  :84.5%
+2019-07-26 03:00:43,285 Reid_Baseline INFO: CMC curve, Rank-10 :88.5%
+top:  125
+100%|██████████| 607/607 [02:17<00:00,  4.41it/s]
+tensor(0.6072)   tensor(65708)
+2019-07-26 03:29:52,246 Reid_Baseline INFO: Validation Results - Epoch: 1080
+2019-07-26 03:29:52,246 Reid_Baseline INFO: mAP: 40.9%
+2019-07-26 03:29:52,247 Reid_Baseline INFO: CMC curve, Rank-1  :73.3%
+2019-07-26 03:29:52,247 Reid_Baseline INFO: CMC curve, Rank-5  :85.2%
+2019-07-26 03:29:52,247 Reid_Baseline INFO: CMC curve, Rank-10 :89.6%
+top:  130
+100%|██████████| 607/607 [02:17<00:00,  4.40it/s]
+tensor(0.6055)   tensor(66538)
+Model:ResNet50_epo1120.pth saves successfully
+2019-07-26 03:58:59,693 Reid_Baseline INFO: Validation Results - Epoch: 1120
+2019-07-26 03:58:59,693 Reid_Baseline INFO: mAP: 39.4%
+2019-07-26 03:58:59,693 Reid_Baseline INFO: CMC curve, Rank-1  :72.0%
+2019-07-26 03:58:59,693 Reid_Baseline INFO: CMC curve, Rank-5  :85.2%
+2019-07-26 03:58:59,693 Reid_Baseline INFO: CMC curve, Rank-10 :89.3%
+top:  135
+100%|██████████| 607/607 [02:17<00:00,  4.40it/s]
+tensor(0.6042)   tensor(67511)
+2019-07-26 04:28:09,272 Reid_Baseline INFO: Validation Results - Epoch: 1160
+2019-07-26 04:28:09,272 Reid_Baseline INFO: mAP: 41.3%
+2019-07-26 04:28:09,272 Reid_Baseline INFO: CMC curve, Rank-1  :73.5%
+2019-07-26 04:28:09,272 Reid_Baseline INFO: CMC curve, Rank-5  :86.0%
+2019-07-26 04:28:09,273 Reid_Baseline INFO: CMC curve, Rank-10 :89.8%
+top:  140
+100%|██████████| 607/607 [02:17<00:00,  4.40it/s]
+tensor(0.6076)   tensor(68043)
+Model:ResNet50_epo1200.pth saves successfully
+2019-07-26 04:57:17,942 Reid_Baseline INFO: Validation Results - Epoch: 1200
+2019-07-26 04:57:17,942 Reid_Baseline INFO: mAP: 39.0%
+2019-07-26 04:57:17,943 Reid_Baseline INFO: CMC curve, Rank-1  :72.4%
+2019-07-26 04:57:17,943 Reid_Baseline INFO: CMC curve, Rank-5  :85.1%
+2019-07-26 04:57:17,943 Reid_Baseline INFO: CMC curve, Rank-10 :89.8%
+top:  145
+100%|██████████| 607/607 [02:17<00:00,  4.40it/s]
+tensor(0.6053)   tensor(68439)
+2019-07-26 05:26:30,032 Reid_Baseline INFO: Validation Results - Epoch: 1240
+2019-07-26 05:26:30,033 Reid_Baseline INFO: mAP: 41.0%
+2019-07-26 05:26:30,033 Reid_Baseline INFO: CMC curve, Rank-1  :73.2%
+2019-07-26 05:26:30,033 Reid_Baseline INFO: CMC curve, Rank-5  :85.9%
+2019-07-26 05:26:30,033 Reid_Baseline INFO: CMC curve, Rank-10 :89.7%
+top:  150
+100%|██████████| 607/607 [02:18<00:00,  4.39it/s]
+tensor(0.6060)   tensor(69014)
+Model:ResNet50_epo1280.pth saves successfully
+2019-07-26 05:55:39,874 Reid_Baseline INFO: Validation Results - Epoch: 1280
+2019-07-26 05:55:39,874 Reid_Baseline INFO: mAP: 41.4%
+2019-07-26 05:55:39,875 Reid_Baseline INFO: CMC curve, Rank-1  :74.0%
+2019-07-26 05:55:39,875 Reid_Baseline INFO: CMC curve, Rank-5  :85.6%
+2019-07-26 05:55:39,875 Reid_Baseline INFO: CMC curve, Rank-10 :89.5%
+top:  155
+100%|██████████| 607/607 [02:17<00:00,  4.40it/s]
+tensor(0.6075)   tensor(69472)
+2019-07-26 06:24:50,231 Reid_Baseline INFO: Validation Results - Epoch: 1320
+2019-07-26 06:24:50,231 Reid_Baseline INFO: mAP: 42.5%
+2019-07-26 06:24:50,231 Reid_Baseline INFO: CMC curve, Rank-1  :73.8%
+2019-07-26 06:24:50,231 Reid_Baseline INFO: CMC curve, Rank-5  :86.3%
+2019-07-26 06:24:50,231 Reid_Baseline INFO: CMC curve, Rank-10 :90.2%
+top:  160
+100%|██████████| 607/607 [02:18<00:00,  4.40it/s]
+tensor(0.6159)   tensor(69454)
+Model:ResNet50_epo1360.pth saves successfully
+2019-07-26 06:53:43,263 Reid_Baseline INFO: Validation Results - Epoch: 1360
+2019-07-26 06:53:43,263 Reid_Baseline INFO: mAP: 42.7%
+2019-07-26 06:53:43,263 Reid_Baseline INFO: CMC curve, Rank-1  :74.6%
+2019-07-26 06:53:43,263 Reid_Baseline INFO: CMC curve, Rank-5  :86.3%
+2019-07-26 06:53:43,263 Reid_Baseline INFO: CMC curve, Rank-10 :90.1%
+top:  165
+100%|██████████| 607/607 [02:18<00:00,  4.39it/s]
+tensor(0.6155)   tensor(70055)
+2019-07-26 07:22:32,672 Reid_Baseline INFO: Validation Results - Epoch: 1400
+2019-07-26 07:22:32,672 Reid_Baseline INFO: mAP: 41.7%
+2019-07-26 07:22:32,672 Reid_Baseline INFO: CMC curve, Rank-1  :74.0%
+2019-07-26 07:22:32,672 Reid_Baseline INFO: CMC curve, Rank-5  :86.5%
+2019-07-26 07:22:32,672 Reid_Baseline INFO: CMC curve, Rank-10 :90.7%
+top:  170
+100%|██████████| 607/607 [02:18<00:00,  4.38it/s]
+tensor(0.6143)   tensor(70123)
+Model:ResNet50_epo1440.pth saves successfully
+2019-07-26 07:51:25,773 Reid_Baseline INFO: Validation Results - Epoch: 1440
+2019-07-26 07:51:25,773 Reid_Baseline INFO: mAP: 42.4%
+2019-07-26 07:51:25,774 Reid_Baseline INFO: CMC curve, Rank-1  :74.4%
+2019-07-26 07:51:25,774 Reid_Baseline INFO: CMC curve, Rank-5  :86.3%
+2019-07-26 07:51:25,774 Reid_Baseline INFO: CMC curve, Rank-10 :90.0%
+top:  175
+100%|██████████| 607/607 [02:18<00:00,  4.39it/s]
+tensor(0.6133)   tensor(70929)
+2019-07-26 08:20:16,763 Reid_Baseline INFO: Validation Results - Epoch: 1480
+2019-07-26 08:20:16,763 Reid_Baseline INFO: mAP: 41.9%
+2019-07-26 08:20:16,763 Reid_Baseline INFO: CMC curve, Rank-1  :73.8%
+2019-07-26 08:20:16,763 Reid_Baseline INFO: CMC curve, Rank-5  :86.0%
+2019-07-26 08:20:16,763 Reid_Baseline INFO: CMC curve, Rank-10 :89.6%
+top:  180
+100%|██████████| 607/607 [02:18<00:00,  4.37it/s]
+tensor(0.6159)   tensor(71139)
+Model:ResNet50_epo1520.pth saves successfully
+2019-07-26 08:49:07,854 Reid_Baseline INFO: Validation Results - Epoch: 1520
+2019-07-26 08:49:07,854 Reid_Baseline INFO: mAP: 41.5%
+2019-07-26 08:49:07,854 Reid_Baseline INFO: CMC curve, Rank-1  :74.4%
+2019-07-26 08:49:07,854 Reid_Baseline INFO: CMC curve, Rank-5  :86.2%
+2019-07-26 08:49:07,854 Reid_Baseline INFO: CMC curve, Rank-10 :89.6%
+top:  185
+100%|██████████| 607/607 [02:18<00:00,  4.38it/s]
+tensor(0.6137)   tensor(71481)
+2019-07-26 09:18:00,624 Reid_Baseline INFO: Validation Results - Epoch: 1560
+2019-07-26 09:18:00,624 Reid_Baseline INFO: mAP: 41.8%
+2019-07-26 09:18:00,624 Reid_Baseline INFO: CMC curve, Rank-1  :73.8%
+2019-07-26 09:18:00,624 Reid_Baseline INFO: CMC curve, Rank-5  :86.4%
+2019-07-26 09:18:00,624 Reid_Baseline INFO: CMC curve, Rank-10 :90.1%

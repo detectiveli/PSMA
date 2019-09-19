@@ -1,0 +1,36 @@
+MODEL:
+  NAME: 'ResNet50'
+
+INPUT:
+  SIZE_TRAIN: [256, 128]
+  SIZE_TEST: [256, 128]
+  PROB: 0.5 # random horizontal flip
+  PADDING: 10
+
+DATASETS:
+  NAMES: ('Market1501')
+
+DATALOADER:
+  SAMPLER: 'softmax_triplet'
+  NUM_WORKERS: 8
+
+SOLVER:
+  OPTIMIZER_NAME: 'Adam'
+  MAX_EPOCHS: 4200
+  BASE_LR: 0.00035
+  BIAS_LR_FACTOR: 1
+  WEIGHT_DECAY: 0.0005
+  WEIGHT_DECAY_BIAS: 0.0005
+  IMS_PER_BATCH: 16
+
+  STEP: 40
+  GAMMA: 0.1
+
+  CHECKPOINT_PERIOD: 80
+  EVAL_PERIOD: 40
+
+TEST:
+  IMS_PER_BATCH: 128
+
+OUTPUT_DIR: "./checkpoint/Market1501/Softmax_Triplet_BS64"
+DEVICE: "cuda:0"

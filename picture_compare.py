@@ -3,19 +3,11 @@ import os
 import time
 import torch
 import numpy as np
-from torch.autograd import Variable
 import models
 from config import cfg
 from data_loader import data_loader
 from data_loader.data_loader import read_image
-from logger import make_logger
-from evaluation import evaluation
-from datasets import PersonReID_Dataset_Downloader
 from utils import check_jupyter_run
-if check_jupyter_run():
-    from tqdm import tqdm_notebook as tqdm
-else:
-    from tqdm import tqdm
 
 from data_loader.transforms import transforms
 def load_one_image(img_path):

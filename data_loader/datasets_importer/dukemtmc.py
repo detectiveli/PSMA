@@ -100,8 +100,12 @@ class DukeMTMC_origin(BaseImageDataset):
 
     def __init__(self, cfg, verbose=True, **kwargs):
         super(DukeMTMC_origin, self).__init__()
+        if cfg.DATALOADER.METHOD != 'GAN':
+            data_name = 'bounding_box_train'
+        else:
+            data_name = 'bounding_box_train_camstyle_market'
         self.dataset_dir = os.path.join(cfg.DATASETS.STORE_DIR, self.dataset_dir)
-        self.train_dir = os.path.join(self.dataset_dir, 'bounding_box_train_camstyle_duke') #_camstyle_market bounding_box_train
+        self.train_dir = os.path.join(self.dataset_dir, data_name) #_camstyle_market bounding_box_train
         self.query_dir = os.path.join(self.dataset_dir, 'query')
         self.gallery_dir = os.path.join(self.dataset_dir, 'bounding_box_test')
 
@@ -138,7 +142,7 @@ class DukeMTMC_origin(BaseImageDataset):
     def _process_dir(self, dir_path, relabel=False):
         img_paths = glob.glob(os.path.join(dir_path, '*.jpg'))
         pattern = re.compile(r'([-\d]+)_c(\d)')
-
+        counter_came = [0, 0, 0, 0, 0, 0, 0, 0]
         pid_container = {}
         for label, img_path in enumerate(img_paths):
             pid, _ = map(int, pattern.search(img_path).groups())
@@ -150,6 +154,7 @@ class DukeMTMC_origin(BaseImageDataset):
         for img_path in img_paths:
             pid, camid = map(int, pattern.search(img_path).groups())
             assert 1 <= camid <= 8
+            counter_came[camid - 1] += 1
             camid -= 1  # index starts from 0
             if relabel: pid = pid2label[pid]
             dataset.append((img_path, pid, camid))

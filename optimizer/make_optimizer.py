@@ -14,9 +14,9 @@ def make_optimizer(cfg, model):
             continue
         lr = cfg.SOLVER.BASE_LR
         weight_decay = cfg.SOLVER.WEIGHT_DECAY
-        # if ("classifier" in key) or ("feat_fc" in key) or ("bottleneck" in key):
-        #     lr = cfg.SOLVER.BASE_LR * 10
-        #     weight_decay = cfg.SOLVER.WEIGHT_DECAY * 10
+        if ("classifier" in key) or ("feat_fc" in key) or ("bottleneck" in key):
+            lr = cfg.SOLVER.BASE_LR * 10
+            weight_decay = cfg.SOLVER.WEIGHT_DECAY * 10
         if "bias" in key :
             lr = cfg.SOLVER.BASE_LR * cfg.SOLVER.BIAS_LR_FACTOR
             weight_decay = cfg.SOLVER.WEIGHT_DECAY_BIAS

@@ -1,0 +1,47 @@
+2020-07-13 20:02:52,609 Reid_Baseline INFO: Using 1 GPUS
+2020-07-13 20:02:52,609 Reid_Baseline INFO: Loaded configuration file ./config/market_softmax_Htriplet_GAN.yaml
+2020-07-13 20:02:52,609 Reid_Baseline INFO: Running with config:
+DATALOADER:
+  METHOD: GAN
+  NUM_INSTANCE: 16
+  NUM_JUMP: 5
+  NUM_WORKERS: 0
+  SAMPLER: softmax_Htriplet
+  SHUFFLE: True
+DATASETS:
+  NAMES: Market1501
+  STORE_DIR: /home/lihui/datasets/PSM_DATA
+DEVICE: cuda:0
+INPUT:
+  BRIGHTNESS: 0.0
+  CONTRAST: 0.0
+  HUE: 0.0
+  PADDING: 10
+  PIXEL_MEAN: [0.485, 0.456, 0.406]
+  PIXEL_STD: [0.229, 0.224, 0.225]
+  PROB: 0.5
+  SATURATION: 0.0
+  SIZE_TEST: [256, 128]
+  SIZE_TRAIN: [256, 128]
+MODEL:
+  NAME: ResNet50
+OUTPUT_DIR: ./checkpoint/Market1501/Softmax_HTriplet_G
+RE_RANKING: False
+SOLVER:
+  BASE_LR: 0.0001
+  BIAS_LR_FACTOR: 1
+  CHECKPOINT_PERIOD: 80
+  EVAL_PERIOD: 40
+  GAMMA: 0.1
+  IMS_PER_BATCH: 16
+  MARGIN: 0.3
+  MAX_EPOCHS: 4200
+  MOMENTUM: 0.7
+  OPTIMIZER_NAME: Adam
+  STEP: 80
+  WEIGHT_DECAY: 0.0005
+  WEIGHT_DECAY_BIAS: 0.0005
+TEST:
+  IMS_PER_BATCH: 128
+  LOAD_EPOCH: 120
+2020-07-13 20:02:54,091 Reid_Baseline INFO: Start training

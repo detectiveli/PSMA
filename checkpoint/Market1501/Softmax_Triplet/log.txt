@@ -1,0 +1,131 @@
+2020-07-13 14:55:19,816 Reid_Baseline INFO: Using 1 GPUS
+2020-07-13 14:55:19,816 Reid_Baseline INFO: Loaded configuration file ./config/market_softmax_triplet.yaml
+2020-07-13 14:55:19,816 Reid_Baseline INFO: Running with config:
+DATALOADER:
+  METHOD: default
+  NUM_INSTANCE: 16
+  NUM_JUMP: 1
+  NUM_WORKERS: 0
+  SAMPLER: softmax_triplet
+  SHUFFLE: True
+DATASETS:
+  NAMES: Market1501
+  STORE_DIR: /home/lihui/datasets/PSM_DATA
+DEVICE: cuda:0
+INPUT:
+  BRIGHTNESS: 0.0
+  CONTRAST: 0.0
+  HUE: 0.0
+  PADDING: 10
+  PIXEL_MEAN: [0.485, 0.456, 0.406]
+  PIXEL_STD: [0.229, 0.224, 0.225]
+  PROB: 0.5
+  SATURATION: 0.0
+  SIZE_TEST: [256, 128]
+  SIZE_TRAIN: [256, 128]
+MODEL:
+  NAME: ResNet50
+OUTPUT_DIR: ./checkpoint/Market1501/Softmax_Triplet
+RE_RANKING: False
+SOLVER:
+  BASE_LR: 0.0001
+  BIAS_LR_FACTOR: 1
+  CHECKPOINT_PERIOD: 80
+  EVAL_PERIOD: 40
+  GAMMA: 0.1
+  IMS_PER_BATCH: 16
+  MARGIN: 0.3
+  MAX_EPOCHS: 1720
+  MOMENTUM: 0.7
+  OPTIMIZER_NAME: Adam
+  STEP: 40
+  WEIGHT_DECAY: 0.0005
+  WEIGHT_DECAY_BIAS: 0.0005
+TEST:
+  IMS_PER_BATCH: 128
+  LOAD_EPOCH: 120
+2020-07-13 14:55:21,041 Reid_Baseline INFO: Start training
+2020-07-13 15:02:05,860 Reid_Baseline INFO: Validation Results - Epoch: 40
+2020-07-13 15:02:05,860 Reid_Baseline INFO: mAP: 9.6%
+2020-07-13 15:02:05,860 Reid_Baseline INFO: CMC curve, Rank-1  :27.3%
+2020-07-13 15:02:05,860 Reid_Baseline INFO: CMC curve, Rank-5  :42.8%
+2020-07-13 15:02:05,860 Reid_Baseline INFO: CMC curve, Rank-10 :49.6%
+2020-07-13 15:02:05,860 Reid_Baseline INFO: CMC curve, Rank-20 :57.7%
+2020-07-13 15:08:31,768 Reid_Baseline INFO: Validation Results - Epoch: 80
+2020-07-13 15:08:31,768 Reid_Baseline INFO: mAP: 10.2%
+2020-07-13 15:08:31,768 Reid_Baseline INFO: CMC curve, Rank-1  :28.1%
+2020-07-13 15:08:31,768 Reid_Baseline INFO: CMC curve, Rank-5  :43.5%
+2020-07-13 15:08:31,768 Reid_Baseline INFO: CMC curve, Rank-10 :50.9%
+2020-07-13 15:08:31,768 Reid_Baseline INFO: CMC curve, Rank-20 :58.5%
+2020-07-13 15:18:48,509 Reid_Baseline INFO: Validation Results - Epoch: 120
+2020-07-13 15:18:48,510 Reid_Baseline INFO: mAP: 15.3%
+2020-07-13 15:18:48,510 Reid_Baseline INFO: CMC curve, Rank-1  :39.2%
+2020-07-13 15:18:48,510 Reid_Baseline INFO: CMC curve, Rank-5  :56.1%
+2020-07-13 15:18:48,510 Reid_Baseline INFO: CMC curve, Rank-10 :63.0%
+2020-07-13 15:18:48,510 Reid_Baseline INFO: CMC curve, Rank-20 :69.3%
+2020-07-13 15:32:22,523 Reid_Baseline INFO: Validation Results - Epoch: 160
+2020-07-13 15:32:22,524 Reid_Baseline INFO: mAP: 17.9%
+2020-07-13 15:32:22,524 Reid_Baseline INFO: CMC curve, Rank-1  :45.2%
+2020-07-13 15:32:22,524 Reid_Baseline INFO: CMC curve, Rank-5  :60.0%
+2020-07-13 15:32:22,524 Reid_Baseline INFO: CMC curve, Rank-10 :66.4%
+2020-07-13 15:32:22,524 Reid_Baseline INFO: CMC curve, Rank-20 :72.7%
+2020-07-13 15:49:18,918 Reid_Baseline INFO: Validation Results - Epoch: 200
+2020-07-13 15:49:18,918 Reid_Baseline INFO: mAP: 20.5%
+2020-07-13 15:49:18,918 Reid_Baseline INFO: CMC curve, Rank-1  :48.3%
+2020-07-13 15:49:18,918 Reid_Baseline INFO: CMC curve, Rank-5  :64.0%
+2020-07-13 15:49:18,918 Reid_Baseline INFO: CMC curve, Rank-10 :70.2%
+2020-07-13 15:49:18,918 Reid_Baseline INFO: CMC curve, Rank-20 :76.4%
+2020-07-13 16:09:58,331 Reid_Baseline INFO: Validation Results - Epoch: 240
+2020-07-13 16:09:58,331 Reid_Baseline INFO: mAP: 22.1%
+2020-07-13 16:09:58,331 Reid_Baseline INFO: CMC curve, Rank-1  :50.9%
+2020-07-13 16:09:58,331 Reid_Baseline INFO: CMC curve, Rank-5  :65.5%
+2020-07-13 16:09:58,331 Reid_Baseline INFO: CMC curve, Rank-10 :71.4%
+2020-07-13 16:09:58,331 Reid_Baseline INFO: CMC curve, Rank-20 :77.4%
+2020-07-13 16:34:43,781 Reid_Baseline INFO: Validation Results - Epoch: 280
+2020-07-13 16:34:43,781 Reid_Baseline INFO: mAP: 26.1%
+2020-07-13 16:34:43,781 Reid_Baseline INFO: CMC curve, Rank-1  :54.2%
+2020-07-13 16:34:43,781 Reid_Baseline INFO: CMC curve, Rank-5  :69.6%
+2020-07-13 16:34:43,781 Reid_Baseline INFO: CMC curve, Rank-10 :75.5%
+2020-07-13 16:34:43,781 Reid_Baseline INFO: CMC curve, Rank-20 :81.1%
+2020-07-13 17:00:34,451 Reid_Baseline INFO: Validation Results - Epoch: 320
+2020-07-13 17:00:34,452 Reid_Baseline INFO: mAP: 27.5%
+2020-07-13 17:00:34,452 Reid_Baseline INFO: CMC curve, Rank-1  :55.3%
+2020-07-13 17:00:34,452 Reid_Baseline INFO: CMC curve, Rank-5  :70.2%
+2020-07-13 17:00:34,452 Reid_Baseline INFO: CMC curve, Rank-10 :76.1%
+2020-07-13 17:00:34,452 Reid_Baseline INFO: CMC curve, Rank-20 :81.2%
+2020-07-13 17:26:40,690 Reid_Baseline INFO: Validation Results - Epoch: 360
+2020-07-13 17:26:40,690 Reid_Baseline INFO: mAP: 30.0%
+2020-07-13 17:26:40,690 Reid_Baseline INFO: CMC curve, Rank-1  :58.6%
+2020-07-13 17:26:40,690 Reid_Baseline INFO: CMC curve, Rank-5  :73.2%
+2020-07-13 17:26:40,690 Reid_Baseline INFO: CMC curve, Rank-10 :78.8%
+2020-07-13 17:26:40,690 Reid_Baseline INFO: CMC curve, Rank-20 :84.4%
+2020-07-13 17:52:57,785 Reid_Baseline INFO: Validation Results - Epoch: 400
+2020-07-13 17:52:57,786 Reid_Baseline INFO: mAP: 28.1%
+2020-07-13 17:52:57,786 Reid_Baseline INFO: CMC curve, Rank-1  :56.1%
+2020-07-13 17:52:57,786 Reid_Baseline INFO: CMC curve, Rank-5  :71.1%
+2020-07-13 17:52:57,786 Reid_Baseline INFO: CMC curve, Rank-10 :77.0%
+2020-07-13 17:52:57,786 Reid_Baseline INFO: CMC curve, Rank-20 :82.4%
+2020-07-13 18:19:44,269 Reid_Baseline INFO: Validation Results - Epoch: 440
+2020-07-13 18:19:44,269 Reid_Baseline INFO: mAP: 30.4%
+2020-07-13 18:19:44,269 Reid_Baseline INFO: CMC curve, Rank-1  :59.3%
+2020-07-13 18:19:44,269 Reid_Baseline INFO: CMC curve, Rank-5  :74.3%
+2020-07-13 18:19:44,269 Reid_Baseline INFO: CMC curve, Rank-10 :79.9%
+2020-07-13 18:19:44,269 Reid_Baseline INFO: CMC curve, Rank-20 :84.6%
+2020-07-13 18:46:33,277 Reid_Baseline INFO: Validation Results - Epoch: 480
+2020-07-13 18:46:33,277 Reid_Baseline INFO: mAP: 31.0%
+2020-07-13 18:46:33,277 Reid_Baseline INFO: CMC curve, Rank-1  :60.0%
+2020-07-13 18:46:33,277 Reid_Baseline INFO: CMC curve, Rank-5  :75.1%
+2020-07-13 18:46:33,277 Reid_Baseline INFO: CMC curve, Rank-10 :80.9%
+2020-07-13 18:46:33,277 Reid_Baseline INFO: CMC curve, Rank-20 :85.9%
+2020-07-13 19:13:39,662 Reid_Baseline INFO: Validation Results - Epoch: 520
+2020-07-13 19:13:39,662 Reid_Baseline INFO: mAP: 30.6%
+2020-07-13 19:13:39,662 Reid_Baseline INFO: CMC curve, Rank-1  :60.8%
+2020-07-13 19:13:39,662 Reid_Baseline INFO: CMC curve, Rank-5  :76.1%
+2020-07-13 19:13:39,662 Reid_Baseline INFO: CMC curve, Rank-10 :81.1%
+2020-07-13 19:13:39,662 Reid_Baseline INFO: CMC curve, Rank-20 :85.3%
+2020-07-13 19:40:27,013 Reid_Baseline INFO: Validation Results - Epoch: 560
+2020-07-13 19:40:27,013 Reid_Baseline INFO: mAP: 31.6%
+2020-07-13 19:40:27,014 Reid_Baseline INFO: CMC curve, Rank-1  :61.5%
+2020-07-13 19:40:27,014 Reid_Baseline INFO: CMC curve, Rank-5  :76.5%
+2020-07-13 19:40:27,014 Reid_Baseline INFO: CMC curve, Rank-10 :81.4%
+2020-07-13 19:40:27,014 Reid_Baseline INFO: CMC curve, Rank-20 :85.7%

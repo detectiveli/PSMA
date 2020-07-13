@@ -25,7 +25,7 @@ class Market1501(BaseImageDataset):
     def __init__(self, cfg, verbose=True, **kwargs):
         super(Market1501, self).__init__()
         self.dataset_dir = os.path.join(cfg.DATASETS.STORE_DIR, self.dataset_dir)
-        self.train_dir = os.path.join(self.dataset_dir, 'bounding_box_train_query_five_shot') # bounding_box_train_query_10_p bounding_box_train_query_one_random
+        self.train_dir = os.path.join(self.dataset_dir, 'bounding_box_train_query_one') # bounding_box_train_query_10_p bounding_box_train_query_one_random
         self.query_dir = os.path.join(self.dataset_dir, 'query')
         self.gallery_dir = os.path.join(self.dataset_dir, 'bounding_box_test')
 
@@ -97,7 +97,11 @@ class Market1501_origin(BaseImageDataset):
     def __init__(self, cfg, verbose=True, **kwargs):
         super(Market1501_origin, self).__init__()
         self.dataset_dir = os.path.join(cfg.DATASETS.STORE_DIR, self.dataset_dir)
-        self.train_dir = os.path.join(self.dataset_dir, 'bounding_box_train') # bounding_box_train_10_p bounding_box_train bounding_box_train_camstyle_market
+        if cfg.DATALOADER.METHOD != 'GAN':
+            data_name = 'bounding_box_train'
+        else:
+            data_name = 'bounding_box_train_camstyle_market'
+        self.train_dir = os.path.join(self.dataset_dir, data_name) # bounding_box_train_10_p bounding_box_train bounding_box_train_camstyle_market
         self.query_dir = os.path.join(self.dataset_dir, 'query')
         self.gallery_dir = os.path.join(self.dataset_dir, 'bounding_box_test')
 
@@ -133,7 +137,7 @@ class Market1501_origin(BaseImageDataset):
     def _process_dir(self, dir_path, relabel=False):
         img_paths = glob.glob(os.path.join(dir_path, '*.jpg'))
         pattern = re.compile(r'([-\d]+)_c(\d)')
-
+        counter_came = [0,0,0,0,0,0]
         pid_container = set()
         for img_path in img_paths:
             pid, _ = map(int, pattern.search(img_path).groups())
@@ -147,8 +151,8 @@ class Market1501_origin(BaseImageDataset):
             if pid == -1: continue  # junk images are just ignored
             assert 0 <= pid <= 1501  # pid == 0 means background
             assert 1 <= camid <= 6
+            counter_came[camid-1] += 1
             camid -= 1  # index starts from 0
             if relabel: pid = pid2label[pid]
             dataset.append((img_path, pid, camid))
-
         return dataset

@@ -40,7 +40,7 @@ _C.DATASETS = CN()
 # List of the dataset names for training, as present in paths_catalog.py
 _C.DATASETS.NAMES = ('Market1501')
 # Setup storage directroy for dataset
-_C.DATASETS.STORE_DIR = ('/home/lihui/datasets')
+_C.DATASETS.STORE_DIR = ('/home/lihui/datasets/PSM_DATA')
 
 # -----------------------------------------------------------------------------
 # DataLoader
@@ -53,6 +53,11 @@ _C.DATALOADER.SAMPLER = 'softmax'
 # Number of instance for one batch
 _C.DATALOADER.NUM_INSTANCE = 16
 
+_C.DATALOADER.SHUFFLE = True
+
+_C.DATALOADER.METHOD = 'default'
+
+_C.DATALOADER.NUM_JUMP = 1
 # ---------------------------------------------------------------------------- #
 # Solver
 # ---------------------------------------------------------------------------- #

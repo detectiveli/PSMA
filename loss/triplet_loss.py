@@ -32,7 +32,7 @@ def euclidean_dist(x, y):
     return dist
 
 
-def hard_example_mining(dist_mat, labels, return_inds=False):
+def hard_example_mining(dist_mat, labels, return_inds=False, HSoft=False):
     """For each anchor, find the hardest positive and negative sample.
     Args:
       dist_mat: pytorch Variable, pair wise distance between samples, shape [N, N]
@@ -60,25 +60,15 @@ def hard_example_mining(dist_mat, labels, return_inds=False):
 
     # `dist_ap` means distance(anchor, positive)
     # both `dist_ap` and `relative_p_inds` with shape [N, 1]
-    num_p = is_pos.sum(dim=1).float() - 0.5
-    dist_ap = (dist_mat * is_pos.float()).sum(dim=1) / num_p
+    if HSoft == True:
+        num_p = is_pos.sum(dim=1).float() - 0.5
+        dist_ap = (dist_mat * is_pos.float()).sum(dim=1) / num_p
+    else:
+        dist_ap, relative_p_inds = torch.max(
+            dist_mat * is_pos.float(), 1, keepdim=True)
 
-    # dist_ap, relative_p_inds = torch.max(
-    #     dist_mat * is_pos.float(), 1, keepdim=True)
-    # dist_ap, relative_p_inds = torch.max(
-    #     dist_mat[is_pos].contiguous().view(N, -1), 1, keepdim=True)
-    # `dist_an` means distance(anchor, negative)
-    # both `dist_an` and `relative_n_inds` with shape [N, 1]
-    # num_n = is_neg.sum(dim=1).float()
-    # dist_an = (dist_mat * is_neg.float()).sum(dim=1) / num_n
     dist_an, relative_n_inds = torch.min(
         dist_mat * is_neg.float(), 1, keepdim=True)
-    # dist_an, relative_n_inds = torch.min(
-    #     dist_mat[is_neg].contiguous().view(N, -1), 1, keepdim=True)
-    # return dist_an
-
-    # shape [N]
-    # dist_ap = dist_ap.squeeze(1)
     dist_an = dist_an.squeeze(1)
 
     if return_inds:
@@ -111,12 +101,12 @@ class TripletLoss(object):
         else:
             self.ranking_loss = nn.SoftMarginLoss()
 
-    def __call__(self, global_feat, labels, normalize_feature=True):
+    def __call__(self, global_feat, labels, normalize_feature=True, HSoft=False):
         if normalize_feature:
             global_feat = normalize(global_feat, axis=-1)
         dist_mat = euclidean_dist(global_feat, global_feat)
         dist_ap, dist_an = hard_example_mining(
-            dist_mat, labels)
+            dist_mat, labels, HSoft=HSoft)
         y = dist_an.new().resize_as_(dist_an).fill_(1)
         if self.margin is not None:
             loss = self.ranking_loss(dist_an, dist_ap, y)

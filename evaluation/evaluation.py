@@ -3,10 +3,7 @@ import torch
 import numpy as np
 from .re_ranking import re_ranking
 from utils import check_jupyter_run
-if check_jupyter_run():
-    from tqdm import tqdm_notebook as tqdm
-else:
-    from tqdm import tqdm
+from tqdm import tqdm
 
 def evaluation(all_feats,all_pids,all_camids,num_query,rr=False, max_rank=50):
     all_feats = torch.cat(all_feats, dim=0)

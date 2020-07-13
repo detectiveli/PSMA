@@ -12,7 +12,7 @@ DATASETS:
 
 DATALOADER:
   SAMPLER: 'softmax_triplet'
-  NUM_WORKERS: 8
+  NUM_WORKERS: 0
 
 SOLVER:
   OPTIMIZER_NAME: 'Adam'
@@ -32,5 +32,5 @@ SOLVER:
 TEST:
   IMS_PER_BATCH: 128
 
-OUTPUT_DIR: "./checkpoint/DukeMTMC/Softmax_Triplet_BS128"
+OUTPUT_DIR: "./checkpoint/DukeMTMC/Softmax_Triplet"
 DEVICE: "cuda:0"

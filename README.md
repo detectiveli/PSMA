@@ -1,4 +1,7 @@
 # Code for PSMA
+This is the code for paper: Progressive Sample Mining and Representation Learning for One-Shot Person Re-identification with Adversarial Samples
+
+https://arxiv.org/abs/1911.00666
 
 ## envs
 This code is mmodified from https://github.com/manutdzou/Person_ReID_Baseline with a same environment.
@@ -21,6 +24,7 @@ python train.py ./config/market_softmax_Htriplet_GAN.yaml
 The log I print is under the /log_answer directory. This can be used as a reference for your training process.
 
 ## Cite
+```
 @misc{li2019progressive,
     title={Progressive Sample Mining and Representation Learning for One-Shot Person Re-identification with Adversarial Samples},
     author={Hui Li and Jimin Xiao and Mingjie Sun and Eng Gee Lim and Yao Zhao},
@@ -29,3 +33,4 @@ The log I print is under the /log_answer directory. This can be used as a refere
     archivePrefix={arXiv},
     primaryClass={cs.CV}
 }
+```

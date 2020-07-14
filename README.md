@@ -20,3 +20,12 @@ python train.py ./config/market_softmax_Htriplet_GAN.yaml
 ### The performance log for checking
 The log I print is under the /log_answer directory. This can be used as a reference for your training process.
 
+## Cite
+@misc{li2019progressive,
+    title={Progressive Sample Mining and Representation Learning for One-Shot Person Re-identification with Adversarial Samples},
+    author={Hui Li and Jimin Xiao and Mingjie Sun and Eng Gee Lim and Yao Zhao},
+    year={2019},
+    eprint={1911.00666},
+    archivePrefix={arXiv},
+    primaryClass={cs.CV}
+}

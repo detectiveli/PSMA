@@ -25,7 +25,7 @@ class Market1501(BaseImageDataset):
     def __init__(self, cfg, verbose=True, **kwargs):
         super(Market1501, self).__init__()
         self.dataset_dir = os.path.join(cfg.DATASETS.STORE_DIR, self.dataset_dir)
-        self.train_dir = os.path.join(self.dataset_dir, 'bounding_box_train_query_one_random') #bounding_box_train_query_one_random
+        self.train_dir = os.path.join(self.dataset_dir, 'bounding_box_train_query_one') #bounding_box_train_query_one_random
         self.query_dir = os.path.join(self.dataset_dir, 'query')
         self.gallery_dir = os.path.join(self.dataset_dir, 'bounding_box_test')
 

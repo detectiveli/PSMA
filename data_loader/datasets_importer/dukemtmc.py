@@ -28,7 +28,7 @@ class DukeMTMC(BaseImageDataset):
     def __init__(self, cfg, verbose=True, **kwargs):
         super(DukeMTMC, self).__init__()
         self.dataset_dir = os.path.join(cfg.DATASETS.STORE_DIR, self.dataset_dir)
-        self.train_dir = os.path.join(self.dataset_dir, 'bounding_box_train_query_one_random')
+        self.train_dir = os.path.join(self.dataset_dir, 'bounding_box_train_query_one')
         self.query_dir = os.path.join(self.dataset_dir, 'query')
         self.gallery_dir = os.path.join(self.dataset_dir, 'bounding_box_test')
 
@@ -103,7 +103,7 @@ class DukeMTMC_origin(BaseImageDataset):
         if cfg.DATALOADER.METHOD != 'GAN':
             data_name = 'bounding_box_train'
         else:
-            data_name = 'bounding_box_train_camstyle_market'
+            data_name = 'bounding_box_train_camstyle_duke'
         self.dataset_dir = os.path.join(cfg.DATASETS.STORE_DIR, self.dataset_dir)
         self.train_dir = os.path.join(self.dataset_dir, data_name) #_camstyle_market bounding_box_train
         self.query_dir = os.path.join(self.dataset_dir, 'query')

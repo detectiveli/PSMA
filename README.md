@@ -11,7 +11,7 @@ We tested our framework on two main datasets: Market1501 and Duke
 
 To achieve the same performance as I did, I recommand to download the dataset I use and put it under datasets:
 
-(BAIDU) link: https://pan.baidu.com/s/1_XJygK4TTlG1l_VlUY4K7g pin: 4ak9
+(BAIDU) link: https://pan.baidu.com/s/1Mr71cnCCB0SY7jHuk2JOdQ keys: 6z9d
 
 The PATH for dataset is in ./config/default.py 
 (for example: _C.DATASETS.STORE_DIR = ('/home/lihui/datasets/PSM_DATA'))
